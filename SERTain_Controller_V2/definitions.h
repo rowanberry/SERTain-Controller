@@ -1,3 +1,6 @@
+
+// all definitions for SERTain controller go here
+
 #ifndef definitions//if the following hasn't yet been declared
 #define definitions
 #include <Servo.h>
@@ -78,10 +81,18 @@ bool motor1On = false;
 bool motor2On = false;
 bool motor3On = false;
 bool motor4On = false;
+int motor1Direction = 0;
+int motor2Direction = 0;
+int motor3Direction = 0;
+int motor4Direction = 0;
 bool motor1Reverse = false;
 bool motor2Reverse = false;
 bool motor3Reverse = false;
 bool motor4Reverse = false;
+int motor1Val = 0;
+int motor2Val = 0;
+int motor3Val = 0;
+int motor4Val = 0;
 int motor1Speed = 0;
 int motor2Speed = 0;
 int motor3Speed = 0;
@@ -116,8 +127,7 @@ int neopixel4[] = {31, 30, 29, 28, 27, 26, 25, 24};
 int hue = 0;
 int sat = 255;
 int val = 255;
-int maxPosMotorVal;
-int maxNegMotorVal;
+int scaleFactor = 0;
 int slider1Mapped06 = 0;
 int slider2Mapped06 = 0;
 int slider3Mapped06 = 0;

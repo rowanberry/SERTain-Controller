@@ -2,7 +2,7 @@
 int loopTime = 5;
 void runLights() {
   runBlinky();
-  neoPixel();
+  //neoPixel();
   presetLights();
   linkLights();
   mapSliderVals();
@@ -105,53 +105,6 @@ void neoPixel(){
     }
     leds[neopixel4[0]] = CHSV(hue, 255, 255);
   }
-
-
-
-
-
-
-
-  
-//  else{
-//    for(int i = 6; i <= constrain(map(slider1Set, 100, 920, 0, 6),0,6); i--){
-//      leds[neopixel1[i]] = CHSV(hue, sat, val);
-//    }
-//  }
-//  if(motor2Reverse){
-//    for(int i=0; i <= constrain(map(slider2Set, 100, 920, 0, 6),0,6); i++){
-//      leds[neopixel2[i]] = CHSV(hue, sat, val);
-//    }
-//  }
-//  else{
-//    for(int i = 6; i <= constrain(map(slider2Set, 100, 920, 0, 6),0,6); i--){
-//      leds[neopixel2[i]] = CHSV(hue, sat, val);
-//    }
-//  }
-//  if(motor3Reverse){
-//    for(int i=0; i <= constrain(map(slider3Set, 100, 920, 0, 6),0,6); i++){
-//      leds[neopixel3[i]] = CHSV(hue, sat, val);
-//    }
-//  }
-//  else{
-//    for(int i = 6; i <= constrain(map(slider3Set, 100, 920, 0, 6),0,6); i--){
-//      leds[neopixel3[i]] = CHSV(hue, sat, val);
-//    }
-//  }
-//  if(motor4Reverse){
-//    for(int i=0; i <= constrain(map(slider4Set, 100, 920, 0, 6),0,6); i++){
-//      leds[neopixel4[i]] = CHSV(hue, sat, 255);
-//    }
-//  }
-//  else{
-//    for(int i = 6; i <= constrain(map(slider4Set, 100, 920, 0, 6),0,6); i--){
-//      leds[neopixel4[i]] = CHSV(hue, 255, 255);
-//    }
-//  }
-//  leds[neopixel1[constrain(map(slider1Set, 15, 920, 0, 6), 0, 6)]] = CHSV(hue, 255, 255);
-//  leds[neopixel2[constrain(map(slider2Set, 10, 929, 0, 6), 0, 6)]] = CHSV(hue, 255, 255);
-//  leds[neopixel3[constrain(map(slider3Set, 15, 930, 0, 6), 0, 6)]] = CHSV(hue, 255, 255);
-//  leds[neopixel4[constrain(map(slider4Set, 15, 930, 0, 6), 0, 6)]] = CHSV(hue, 255, 255);
   FastLED.show();
 }
 

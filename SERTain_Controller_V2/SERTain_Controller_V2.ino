@@ -1,7 +1,7 @@
 #include "definitions.h"
 void setup() {
   setPinModes();
-  createReferenceVals();
+  //createReferenceVals();
   FastLED.addLeds<NEOPIXEL, neopixelPin>(leds, 32);
   Serial.begin(9600);
 }

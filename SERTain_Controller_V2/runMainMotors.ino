@@ -42,7 +42,6 @@ void getMotorSpeeds(){
     motor4Speed = 1500 + map(slider4Val, 15, 930, 0, scaleFactor) * motor4Direction;
   }
 }
-
 void writeToMotors(){
   if(enabled){
     motor1.writeMicroseconds(motor1Speed); 

@@ -1,80 +1,58 @@
 #include "definitions.h"
 void runMainMotors(){
+  getMotorDirection();
   getMotorSpeeds();
   writeToMotors();
-  
+}
+
+void getMotorDirection(){
+  motor1Direction = digitalRead(motor1ReversePin) ? -1:1;
+  motor2Direction = digitalRead(motor2ReversePin) ? -1:1;
+  motor3Direction = digitalRead(motor3ReversePin) ? -1:1;
+  motor4Direction = digitalRead(motor4ReversePin) ? -1:1;
 }
 
 void getMotorSpeeds(){
-  motor1Speed = map(slider1Set, 15, 920, 1000, 2000);
-  motor2Speed = map(slider2Set, 15, 929, 1000, 2000);
-  motor3Speed = map(slider3Set, 15, 930, 1000, 2000);
-  motor4Speed = map(slider4Set, 15, 930, 1000, 2000);
+  if(!digitalRead(slowModePin)){
+    scaleFactor = 500;
+  }
+  else{
+    scaleFactor = 250;
+  }
+
+  if(motor1On){
+    motor1Speed = 1500 + map(slider1Val, 15, 920, 0, scaleFactor) * motor1Direction;
+  }
+  else{
+    motor1Speed = 1500;
+  }
+  if(motor2On){
+    motor2Speed = 1500 + map(slider2Val, 15, 929, 0, scaleFactor) * motor2Direction;
+  }
+  else{
+    motor2Speed = 1500;
+  }
+  if(motor3On){
+    motor3Speed = 1500 + map(slider3Val, 15, 930, 0, scaleFactor) * motor3Direction;
+  }
+  else{
+    motor3Speed = 1500;
+  }
+  if(motor4On){
+    motor4Speed = 1500 + map(slider4Val, 15, 930, 0, scaleFactor) * motor4Direction;
+  }
 }
-
 void writeToMotors(){
-  if(slowModeOn){
-    maxPosMotorVal = 1750;
-    maxNegMotorVal = 1250;
-  }
-  else{
-    maxPosMotorVal = 2000;
-    maxNegMotorVal = 1000;
-  }
   if(enabled){
-    
-    if(motor1On){
-      if(motor1Reverse){
-        motor1.writeMicroseconds(map(motor1Speed, 1000, 2000, 1500, maxPosMotorVal)); 
-      }
-      else{
-        motor1.writeMicroseconds(map(motor1Speed, 1000, 2000, 1500, maxNegMotorVal));
-      }
-    }
-    else{
-      motor1.writeMicroseconds(1500);
-    }
-
-
-    
-    if(motor2On){
-      if(motor2Reverse){
-        motor2.writeMicroseconds(map(motor2Speed, 1000, 2000, 1500, maxPosMotorVal)); 
-      }
-      else{
-        motor2.writeMicroseconds(map(motor2Speed, 1000, 2000, 1500, maxNegMotorVal));
-      }
-    }
-    else{
-      motor2.writeMicroseconds(1500);
-    }
-    if(motor3On){
-      if(motor3Reverse){
-        motor3.writeMicroseconds(map(motor3Speed, 1000, 2000, 1500, maxPosMotorVal)); 
-      }
-      else{
-        motor3.writeMicroseconds(map(motor3Speed, 1000, 2000, 1500, maxNegMotorVal));
-      }
-    }
-    else{
-      motor3.writeMicroseconds(1500);
-    }
-    if(motor4On){
-      if(motor4Reverse){
-        motor4.writeMicroseconds(map(motor4Speed, 1000, 2000, 1500, maxPosMotorVal)); 
-      }
-      else{
-        motor4.writeMicroseconds(map(motor4Speed, 1000, 2000, 1500, maxNegMotorVal));
-      }
-    }
-    else{
-      motor4.writeMicroseconds(1500);
-    }
+    motor1.writeMicroseconds(motor1Speed); 
+    motor2.writeMicroseconds(motor2Speed); 
+    motor3.writeMicroseconds(motor3Speed); 
+    motor4.writeMicroseconds(motor4Speed); 
   }
   else{
-   motor1.writeMicroseconds(1500);
-   motor2.writeMicroseconds(1500);
-   motor3.writeMicroseconds(1500);
-   motor4.writeMicroseconds(1500);
+    motor1.writeMicroseconds(1500); 
+    motor2.writeMicroseconds(1500); 
+    motor3.writeMicroseconds(1500); 
+    motor4.writeMicroseconds(1500); 
   }
 }

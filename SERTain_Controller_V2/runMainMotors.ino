@@ -21,7 +21,7 @@ void writeToMotors(){
     maxPosMotorVal = 2000;
     maxNegMotorVal = 1000;
   }
-  //if(enabled){
+  if(enabled){
     
     if(motor1On){
       if(motor1Reverse){
@@ -70,11 +70,11 @@ void writeToMotors(){
     else{
       motor4.writeMicroseconds(1500);
     }
-  //}
-//  else{
-//   motor1.writeMicroseconds(1500);
-//   motor2.writeMicroseconds(1500);
-//   motor3.writeMicroseconds(1500);
-//   motor4.writeMicroseconds(1500);
-//  }
+  }
+  else{
+   motor1.writeMicroseconds(1500);
+   motor2.writeMicroseconds(1500);
+   motor3.writeMicroseconds(1500);
+   motor4.writeMicroseconds(1500);
+  }
 }

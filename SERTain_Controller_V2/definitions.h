@@ -3,6 +3,8 @@
 #include <Servo.h>
 #include <ADCTouch.h>
 #include <FastLED.h>
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
 #define enablePin 40
 #define preset1Pin 34
 #define preset2Pin 32
@@ -55,6 +57,7 @@
 #define sliderMotor4BackwardsPin 43
 #define blinkyPin 26
 #define neopixelPin 23
+LiquidCrystal_I2C lcd(0x3F,16,2);
 CRGB leds[32];
 Servo motor1;
 Servo motor2;

@@ -2,8 +2,8 @@
 void readInputs(){
   readSwitches();
   getSliderVal();
-  //getSliderTouch();
-  //getSliderNum();
+  getSliderTouch();
+  getSliderNum();
   //sliderNum = 1;
   slider1Set = slider1Val;
   slider2Set = slider2Val;
@@ -17,10 +17,10 @@ void readSwitches(){
   link2Pressed = digitalRead(link2Pin);
   slowModeOn = digitalRead(slowModePin);
   accelerates = digitalRead(accelerationPin);
-  motor1On = digitalRead(motor1OnPin);
-  motor2On = digitalRead(motor2OnPin);
-  motor3On = digitalRead(motor3OnPin);
-  motor4On = digitalRead(motor4OnPin);
+  motor1On = !digitalRead(motor1OnPin);
+  motor2On = !digitalRead(motor2OnPin);
+  motor3On = !digitalRead(motor3OnPin);
+  motor4On = !digitalRead(motor4OnPin);
   motor1Reverse = digitalRead(motor1ReversePin);
   motor2Reverse = digitalRead(motor2ReversePin);
   motor3Reverse = digitalRead(motor3ReversePin);

@@ -1,5 +1,5 @@
 #include "definitions.h"
-int loopTime = 5;
+int loopTime = 2;
 void runLights() {
   runBlinky();
  // neoPixel();

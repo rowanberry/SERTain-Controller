@@ -4,10 +4,11 @@ void startupSafety(){
   for(int i = 0; i <= 6; i ++){
     if(!digitalRead(enablePin)){
       lcd.setBacklight(0);
-      delay(10);
+      delay(100);
       lcd.setBacklight(1);
-      delay(10);
+      delay(100);
     }
   }
   while(!digitalRead(enablePin));
+  lcd.clear();
 }

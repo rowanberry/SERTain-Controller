@@ -41,6 +41,9 @@ void getMotorSpeeds(){
   if(motor4On){
     motor4Speed = 1500 + map(slider4Val, 15, 930, 0, scaleFactor) * motor4Direction;
   }
+  else{
+    motor4Speed = 1500;
+  }
 }
 void writeToMotors(){
   if(enabled){

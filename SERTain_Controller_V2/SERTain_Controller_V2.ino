@@ -16,7 +16,7 @@ void loop() {
   runLights();
   runMainMotors();
   runLCD();
-  // runSliderMotors();
+  runSliderMotors();
   menu();
   Serial.print(slider1Touch);
   Serial.print("   ");

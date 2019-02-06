@@ -7,8 +7,25 @@ void runSliderMotors(){
 
 void setMotors(){
 
+analogWrite(sliderMotor1SpeedPin, 255);
+analogWrite(sliderMotor2SpeedPin, 255);
+analogWrite(sliderMotor3SpeedPin, 255);
 analogWrite(sliderMotor4SpeedPin, 255);
-digitalWrite(sliderMotor4ForwardsPin, HIGH);
+if(enabled){
+  digitalWrite(sliderMotor1ForwardsPin, HIGH);
+  digitalWrite(sliderMotor2ForwardsPin, HIGH);
+  digitalWrite(sliderMotor3ForwardsPin, LOW);
+  digitalWrite(sliderMotor4ForwardsPin, HIGH);
+}
+else{
+  digitalWrite(sliderMotor1ForwardsPin, LOW);
+  digitalWrite(sliderMotor2ForwardsPin, LOW);
+  digitalWrite(sliderMotor3ForwardsPin, HIGH);
+  digitalWrite(sliderMotor4ForwardsPin, LOW);
+}
+digitalWrite(sliderMotor1BackwardsPin, LOW);
+digitalWrite(sliderMotor2BackwardsPin, LOW);
+digitalWrite(sliderMotor3BackwardsPin, HIGH);
 digitalWrite(sliderMotor4BackwardsPin, LOW);
   
 //  analogWrite(sliderMotor1SpeedPin, sliderMotor1Speed);

@@ -3,7 +3,7 @@ void readInputs(){
   readSwitches();
   getSliderVal();
   getSliderTouch();
-  getSliderNum();
+  //getSliderNum();
   //sliderNum = 1;
   slider1Set = slider1Val;
   slider2Set = slider2Val;
@@ -71,23 +71,23 @@ void createReferenceVals(){
   ref3 = ADCTouch.read(slider3TouchPin);
   ref4 = ADCTouch.read(slider4TouchPin);
 }
-
-void getSliderNum(){
-  if(!menuOpen){
-    if(slider1Touched){
-      sliderNum = 1;
-    }
-    if(slider2Touched){
-      sliderNum = 2;
-    }
-    if(slider3Touched){
-      sliderNum = 3;
-    }
-    if(slider4Touched){
-      sliderNum = 4;
-    }
-  }
-  else{
-    sliderNum = 0;
-  }
-}
+//
+//void getSliderNum(){
+//  if(!menuOpen){
+//    if(slider1Touched){
+//      sliderNum = 1;
+//    }
+//    if(slider2Touched){
+//      sliderNum = 2;
+//    }
+//    if(slider3Touched){
+//      sliderNum = 3;
+//    }
+//    if(slider4Touched){
+//      sliderNum = 4;
+//    }
+//  }
+//  else{
+//    sliderNum = 0;
+//  }
+//}

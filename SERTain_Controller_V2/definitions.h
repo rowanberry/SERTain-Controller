@@ -56,7 +56,7 @@
 #define sliderMotor4ForwardsPin 41
 #define sliderMotor1BackwardsPin 47
 #define sliderMotor2BackwardsPin 52
-#define sliderMotor3BackwardsPin 38
+#define sliderMotor3BackwardsPin 39
 #define sliderMotor4BackwardsPin 43
 #define blinkyPin 26
 #define neopixelPin 23

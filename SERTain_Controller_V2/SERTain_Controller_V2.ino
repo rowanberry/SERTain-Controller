@@ -18,12 +18,6 @@ void loop() {
   runLCD();
   runSliderMotors();
   menu();
-  Serial.print(slider1Touch);
-  Serial.print("   ");
-  Serial.print(slider2Touch);
-  Serial.print("   ");
-  Serial.print(slider3Touch);
-  Serial.print("   ");
-  Serial.print(slider4Touch);
+  Serial.print(s2ErrorSum);
   Serial.println();
 }

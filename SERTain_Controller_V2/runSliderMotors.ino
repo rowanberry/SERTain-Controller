@@ -1,57 +1,50 @@
 #include "definitions.h"
 void runSliderMotors(){
   slider2Set = 500;
-  pid();
+  if(enabled){
+    pid();
+  }
+  else{
+    setSliderMotors(2, 0);
+    s2ErrorSum = 0;
+    lastPid = millis();
+  }
   writeToSliderMotors();
 }
 
-
+#define pid_p .1
+#define pid_i .0009
 void pid(){
-  if(slider2Val < slider2Set){
-  setSliderMotors(2, (map(abs(slider2Val-slider2Set), 0, 1023, 0, 255)), true);
+  s2Error = slider2Set - slider2Val;
+  s2ErrorSum += (millis() - lastPid)/10 * s2Error;
+  if((s2Error > 0 && s2ErrorSum < 0)||(s2Error < 0 && s2ErrorSum > 0)){
+    s2ErrorSum = 0;
   }
-  else if(slider2Val > slider2Set){
-  setSliderMotors(2, (map(abs(slider2Val-slider2Set), 0, 1023, 0, 255)), false);
-  }
-  else{
-    setSliderMotors(2, 0, true);
-  }
+  setSliderMotors(2, constrain(s2Error * pid_p + s2ErrorSum * pid_i, -255, 255));
+  lastPid = millis();
+ // s2ErrorSum *= .5;
+  
+
+ // setSliderMotors(2, map(s2Error, 0, 1023, 0, 255));
 }
 
 
 
-void setSliderMotors(int sliderNum, int speed, bool forwards){
-  if(sliderNum == 1){
-    sliderMotor1Speed = speed;
-    sliderMotor1Forwards = forwards;
-  }
+void setSliderMotors(int sliderNum, int speed){
   if(sliderNum == 2){
-    sliderMotor2Speed = speed;
-    sliderMotor2Forwards = forwards;
-  }
-  if(sliderNum == 3){
-    sliderMotor3Speed = speed;
-    sliderMotor3Forwards = forwards;
-  }
-  if(sliderNum == 4){
-    sliderMotor4Speed = speed;
-    sliderMotor4Forwards = forwards;
+    sliderMotor2Speed = abs(speed);
+    if(speed > 0){
+      sliderMotor2Forwards = true;
+    }
+    else if (speed < 0){
+      sliderMotor2Forwards = false;
+    }
   }
 }
 
 
 
 void writeToSliderMotors(){
-  if(sliderMotor1Forwards){
-    digitalWrite(sliderMotor1ForwardsPin, HIGH);
-    digitalWrite(sliderMotor1BackwardsPin, LOW);
-  }
-  else{
-    digitalWrite(sliderMotor1ForwardsPin, LOW);
-    digitalWrite(sliderMotor1BackwardsPin, HIGH);
-  }
-  analogWrite(sliderMotor1SpeedPin, sliderMotor1Speed);
-  
   if(sliderMotor2Forwards){
     digitalWrite(sliderMotor2ForwardsPin, HIGH);
     digitalWrite(sliderMotor2BackwardsPin, LOW);
@@ -61,24 +54,4 @@ void writeToSliderMotors(){
     digitalWrite(sliderMotor2BackwardsPin, HIGH);
   }
   analogWrite(sliderMotor2SpeedPin, sliderMotor2Speed);
-  
-  if(sliderMotor3Forwards){
-    digitalWrite(sliderMotor3ForwardsPin, HIGH);
-    digitalWrite(sliderMotor3BackwardsPin, LOW);
-  }
-  else{
-    digitalWrite(sliderMotor3ForwardsPin, LOW);
-    digitalWrite(sliderMotor3BackwardsPin, HIGH);
-  }
-  analogWrite(sliderMotor3SpeedPin, sliderMotor3Speed);
-  
-  if(sliderMotor4Forwards){
-    digitalWrite(sliderMotor4ForwardsPin, HIGH);
-    digitalWrite(sliderMotor4BackwardsPin, LOW);
-  }
-  else{
-    digitalWrite(sliderMotor4ForwardsPin, LOW);
-    digitalWrite(sliderMotor4BackwardsPin, HIGH);
-  }
-  analogWrite(sliderMotor4SpeedPin, sliderMotor4Speed);
 }

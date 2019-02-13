@@ -143,4 +143,13 @@ bool sliderMotor1Forwards = false;
 bool sliderMotor2Forwards = false;
 bool sliderMotor3Forwards = false;
 bool sliderMotor4Forwards = false;
+int s1Error = 0;
+int s2Error = 0;
+int s3Error = 0;
+int s4Error = 0;
+long s1ErrorSum = 0;
+long s2ErrorSum = 0;
+long s3ErrorSum = 0;
+long s4ErrorSum = 0;
+int lastPid = 0;
 #endif

@@ -6,6 +6,7 @@ void runLights() {
   presetLights();
   linkLights();
   mapSliderVals();
+  lightLoopCounter();
 }
 
 void mapSliderVals(){
@@ -16,8 +17,8 @@ void mapSliderVals(){
 }
 
 
+
 void runBlinky(){
-  lightLoopCounter();
   if(enabled){
     if(loops <= loopTime / 2){
       digitalWrite(blinkyPin, HIGH);
@@ -39,6 +40,35 @@ void lightLoopCounter(){
   }
 }
 
+void linkLights(){
+  if(link1Pressed){
+    link1On = true;
+    if(loops < loopTime){
+      digitalWrite(linkLight1Pin, HIGH);
+    }
+    else{
+      digitalWrite(linkLight1Pin, LOW);
+    }
+  }
+  else{
+    link1On = false;
+    digitalWrite(linkLight1Pin, LOW);
+  }
+  
+  if(link2Pressed){
+    link2On = true;
+    if(loops < loopTime){
+      digitalWrite(linkLight2Pin, HIGH);
+    }
+    else{
+      digitalWrite(linkLight2Pin, LOW);
+    }
+  }
+  else{
+    link2On = false;
+    digitalWrite(linkLight2Pin, LOW);
+  }
+}
 
 void neoPixel(){
   if(slowModeOn){
@@ -132,20 +162,5 @@ void presetLights(){
   }
   else{
     digitalWrite(preset4LightPin, LOW);
-  }
-}
-
-void linkLights(){
-  if (linkLight1On){
-    digitalWrite(linkLight1Pin, HIGH);
-  }
-  else{
-    digitalWrite(linkLight1Pin, LOW);
-  }
-  if (linkLight2On){
-    digitalWrite(linkLight2Pin, HIGH);
-  }
-  else{
-    digitalWrite(linkLight2Pin, LOW);
   }
 }

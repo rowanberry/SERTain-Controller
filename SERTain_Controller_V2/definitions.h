@@ -143,4 +143,6 @@ bool sliderMotor1Forwards = false;
 bool sliderMotor2Forwards = false;
 bool sliderMotor3Forwards = false;
 bool sliderMotor4Forwards = false;
+bool link1 = false;
+bool link2 = false;
 #endif

@@ -28,6 +28,7 @@ void getMotorSpeeds(){
   }
   if(motor2On){
     motor2Speed = 1500 + map(slider2Val, 15, 929, 0, scaleFactor) * motor2Direction;
+    link();
   }
   else{
     motor2Speed = 1500;
@@ -40,6 +41,7 @@ void getMotorSpeeds(){
   }
   if(motor4On){
     motor4Speed = 1500 + map(slider4Val, 15, 930, 0, scaleFactor) * motor4Direction;
+    link();
   }
   else{
     motor4Speed = 1500;

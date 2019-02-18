@@ -12,18 +12,15 @@ void setup() {
 }
 
 void loop() {
+  digitalWrite(linkLight2Pin, HIGH);
   readInputs();
   runLights();
+  link();
   runMainMotors();
   runLCD();
   // runSliderMotors();
   menu();
-  Serial.print(slider1Touch);
-  Serial.print("   ");
-  Serial.print(slider2Touch);
-  Serial.print("   ");
-  Serial.print(slider3Touch);
-  Serial.print("   ");
-  Serial.print(slider4Touch);
+  Serial.print(link1Pressed);
+  Serial.print(link2Pressed);
   Serial.println();
 }

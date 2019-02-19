@@ -2,7 +2,6 @@
 int loopTime = 2;
 void runLights() {
   runBlinky();
- // neoPixel();
   presetLights();
   linkLights();
   mapSliderVals();

@@ -60,7 +60,6 @@
 #define sliderMotor4BackwardsPin 43
 #define blinkyPin 26
 #define neopixelPin 23
-#define comSignalPin 6
 LiquidCrystal_I2C lcd(0x3F,16,2);
 CRGB leds[32];
 Servo motor1;

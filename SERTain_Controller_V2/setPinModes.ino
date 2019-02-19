@@ -43,6 +43,7 @@ void setPinModes(){
   pinMode(sliderMotor2BackwardsPin, OUTPUT);
   pinMode(sliderMotor3BackwardsPin, OUTPUT);
   pinMode(sliderMotor4BackwardsPin, OUTPUT);
+  pinMode(comSignalPin, INPUT_PULLUP);
 //  attachInterrupt(digitalPinToInterrupt(rotaryPinA), rotaryAISR, CHANGE);
 //  attachInterrupt(digitalPinToInterrupt(rotaryPinB), rotaryBISR, CHANGE);
   motor1.attach(motor1PWMPin);

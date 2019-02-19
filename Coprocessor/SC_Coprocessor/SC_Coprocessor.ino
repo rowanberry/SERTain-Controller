@@ -2,13 +2,16 @@
 int reading = 0;
 void setup() {
   Serial.begin(9600);
-  Serial1.begin(2000000);
+  Serial1.begin(9600);
+  setPinModes();
+  FastLED.addLeds<NEOPIXEL, neopixelPin>(leds, 32);
 }
 
 void loop() {
-  while(Serial1.available() >= 2){
+  while(Serial1.available() >= 16){
     comReceive();
   }
+  runNeoPixels();
   Serial.print(slider1Set);
   Serial.print(" ");
   Serial.print(slider2Set);
@@ -16,6 +19,8 @@ void loop() {
   Serial.print(slider3Set);
   Serial.print(" ");
   Serial.print(slider4Set);
+  Serial.print(" ");
+  Serial.print(slowModeOn);
   Serial.println();
 }
 
@@ -46,6 +51,18 @@ void comReceive(){
     reading = Serial1.read();
     if(reading <= 200){
       slider4Set = map(reading, 0, 200, 0, 1023);
+    }
+  }
+  
+  if(reading == 205){
+    reading = Serial1.read();
+    if(reading <= 200){
+      if(reading == 1){
+        slowModeOn = true;
+      }
+      else{
+        slowModeOn = false;
+      }
     }
   }
 }

@@ -4,8 +4,6 @@
 #ifndef definitions//if the following hasn't yet been declared
 #define definitions
 #include <Servo.h>
-#include <ADCTouch.h>
-#include <FastLED.h>
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 #define enablePin 40
@@ -42,10 +40,6 @@
 #define slider2SweepPin A5
 #define slider3SweepPin A7
 #define slider4SweepPin A6
-#define slider1TouchPin A0
-#define slider2TouchPin A1
-#define slider3TouchPin A2
-#define slider4TouchPin A3
 #define sliderMotor1SpeedPin 2
 #define sliderMotor2SpeedPin 3
 #define sliderMotor3SpeedPin 5
@@ -59,10 +53,8 @@
 #define sliderMotor3BackwardsPin 38
 #define sliderMotor4BackwardsPin 43
 #define blinkyPin 26
-#define neopixelPin 23
 #define comSignalPin 6
 LiquidCrystal_I2C lcd(0x3F,16,2);
-CRGB leds[32];
 Servo motor1;
 Servo motor2;
 Servo motor3;

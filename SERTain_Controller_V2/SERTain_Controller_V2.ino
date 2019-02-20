@@ -6,9 +6,8 @@ void setup() {
   if(!digitalRead(enablePin)){
     startupSafety();
   }
-  //createReferenceVals();
-  //FastLED.addLeds<NEOPIXEL, neopixelPin>(leds, 32);
   Serial.begin(9600);
+  Serial1.begin(9600);
 }
 
 void loop() {
@@ -16,14 +15,17 @@ void loop() {
   runLights();
   runMainMotors();
   runLCD();
+  comSend();
   // runSliderMotors();
   menu();
-  Serial.print(slider1Touch);
-  Serial.print("   ");
-  Serial.print(slider2Touch);
-  Serial.print("   ");
-  Serial.print(slider3Touch);
-  Serial.print("   ");
-  Serial.print(slider4Touch);
-  Serial.println();
+//  Serial.print(slider1Set);
+//  Serial.print(" ");
+//  Serial.print(slider2Set);
+//  Serial.print(" ");
+//  Serial.print(slider3Set);
+//  Serial.print(" ");
+//  Serial.print(slider4Set);
+//  Serial.print(" ");
+//  Serial.print(slowModeOn);
+//  Serial.println();
 }

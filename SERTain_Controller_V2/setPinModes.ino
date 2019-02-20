@@ -26,10 +26,6 @@ void setPinModes(){
   pinMode(slider2SweepPin, INPUT_PULLUP);
   pinMode(slider3SweepPin, INPUT_PULLUP);
   pinMode(slider4SweepPin, INPUT_PULLUP);
-  pinMode(slider1TouchPin, INPUT_PULLUP);
-  pinMode(slider2TouchPin, INPUT_PULLUP);
-  pinMode(slider3TouchPin, INPUT_PULLUP);
-  pinMode(slider4TouchPin, INPUT_PULLUP);
   pinMode(blinkyPin, OUTPUT);
   pinMode(sliderMotor1SpeedPin, OUTPUT);
   pinMode(sliderMotor2SpeedPin, OUTPUT);
@@ -43,6 +39,7 @@ void setPinModes(){
   pinMode(sliderMotor2BackwardsPin, OUTPUT);
   pinMode(sliderMotor3BackwardsPin, OUTPUT);
   pinMode(sliderMotor4BackwardsPin, OUTPUT);
+  pinMode(comSignalPin, INPUT_PULLUP);
 //  attachInterrupt(digitalPinToInterrupt(rotaryPinA), rotaryAISR, CHANGE);
 //  attachInterrupt(digitalPinToInterrupt(rotaryPinB), rotaryBISR, CHANGE);
   motor1.attach(motor1PWMPin);

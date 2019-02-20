@@ -18,14 +18,14 @@ void loop() {
   comSend();
   // runSliderMotors();
   menu();
-//  Serial.print(slider1Set);
-//  Serial.print(" ");
-//  Serial.print(slider2Set);
-//  Serial.print(" ");
-//  Serial.print(slider3Set);
-//  Serial.print(" ");
-//  Serial.print(slider4Set);
-//  Serial.print(" ");
-//  Serial.print(slowModeOn);
-//  Serial.println();
+  Serial.print(slider1Set);
+  Serial.print(" ");
+  Serial.print(slider2Set);
+  Serial.print(" ");
+  Serial.print(slider3Set);
+  Serial.print(" ");
+  Serial.print(slider4Set);
+  Serial.print(" ");
+  Serial.print(slowModeOn);
+  Serial.println();
 }

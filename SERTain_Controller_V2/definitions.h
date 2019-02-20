@@ -54,6 +54,7 @@
 #define sliderMotor4BackwardsPin 43
 #define blinkyPin 26
 #define comSignalPin 6
+#define dead_zone 60
 LiquidCrystal_I2C lcd(0x3F,16,2);
 Servo motor1;
 Servo motor2;

@@ -20,26 +20,26 @@ void getMotorSpeeds(){
     scaleFactor = 250;
   }
 
-  if(motor1On){
-    motor1Speed = 1500 + map(slider1Val, 15, 920, 0, scaleFactor) * motor1Direction;
+  if(motor1On && slider1Set > dead_zone){
+    motor1Speed = 1500 + map(slider1Set, 15, 920, 0, scaleFactor) * motor1Direction;
   }
   else{
     motor1Speed = 1500;
   }
-  if(motor2On){
-    motor2Speed = 1500 + map(slider2Val, 15, 929, 0, scaleFactor) * motor2Direction;
+  if(motor2On && slider2Set > dead_zone){
+    motor2Speed = 1500 + map(slider2Set, 15, 929, 0, scaleFactor) * motor2Direction;
   }
   else{
     motor2Speed = 1500;
   }
-  if(motor3On){
-    motor3Speed = 1500 + map(slider3Val, 15, 930, 0, scaleFactor) * motor3Direction;
+  if(motor3On && slider3Set > dead_zone){
+    motor3Speed = 1500 + map(slider3Set, 15, 930, 0, scaleFactor) * motor3Direction;
   }
   else{
     motor3Speed = 1500;
   }
-  if(motor4On){
-    motor4Speed = 1500 + map(slider4Val, 15, 930, 0, scaleFactor) * motor4Direction;
+  if(motor4On && slider4Set > dead_zone){
+    motor4Speed = 1500 + map(slider4Set, 15, 930, 0, scaleFactor) * motor4Direction;
   }
   else{
     motor4Speed = 1500;

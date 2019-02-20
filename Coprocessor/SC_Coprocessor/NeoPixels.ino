@@ -1,6 +1,6 @@
 #include "definitions.h"
 int bright = 255;
-int dim = 30;
+int dim = 25;
 void runNeoPixels(){
   if(slowModeOn){
     hue = 160;
@@ -8,6 +8,8 @@ void runNeoPixels(){
   else{
     hue = 0;
   }
+
+
   
   for(int i = 0; i <= 6; i++){
     if(i < constrain(map(slider1Set, 100, 920, 0, 6), 0, 6)){

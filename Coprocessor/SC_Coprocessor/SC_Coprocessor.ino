@@ -1,5 +1,8 @@
 #include "definitions.h"
 int reading = 0;
+int touchNum = 0;
+bool touch[4];
+int touchPin[] = {A0, A1, A2, A3};
 void setup() {
   Serial.begin(9600);
   Serial1.begin(9600);
@@ -11,17 +14,23 @@ void loop() {
   while(Serial1.available() >= 16){
     comReceive();
   }
+  getTouch();
   runNeoPixels();
-  Serial.print(slider1Set);
+  Serial.print(touch[0]);
   Serial.print(" ");
-  Serial.print(slider2Set);
+  Serial.print(touch[1]);
   Serial.print(" ");
-  Serial.print(slider3Set);
+  Serial.print(touch[2]);
   Serial.print(" ");
-  Serial.print(slider4Set);
-  Serial.print(" ");
-  Serial.print(slowModeOn);
+  Serial.print(touch[3]);
   Serial.println();
+}
+
+void comSend(){
+  for (int i = 0; i < 4; i++){
+    Serial1.write(201+i);
+    Serial.write(1);
+  }
 }
 
 void comReceive(){
@@ -64,5 +73,20 @@ void comReceive(){
         slowModeOn = false;
       }
     }
+  }
+}
+
+void getTouch(){
+  if(touchNum < 4){
+    touchNum++;
+  }
+  else{
+    touchNum = 0;
+  }
+  if(ADCTouch.read(touchPin[touchNum]) > 750){
+    touch[touchNum] = true;
+  }
+  else{
+    touch[touchNum] = false;
   }
 }

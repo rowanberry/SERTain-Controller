@@ -16,6 +16,10 @@ void comSend(){
   }
 }
 
+void comReceive(){
+  
+}
+
 int getSliderComVals(int sliderIndex){
   sliderCom[0] = constrain(map(slider1Set, 0, 1023, 0, 200), 0, 200);
   sliderCom[1] = constrain(map(slider2Set, 0, 1023, 0, 200), 0, 200);

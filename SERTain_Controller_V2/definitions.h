@@ -137,4 +137,29 @@ bool sliderMotor1Forwards = false;
 bool sliderMotor2Forwards = false;
 bool sliderMotor3Forwards = false;
 bool sliderMotor4Forwards = false;
+int slider1Error = 0;
+int slider2Error = 0;
+int slider3Error = 0;
+int slider4Error = 0;
+int slider1ErrorSum = 0;
+int slider2ErrorSum = 0;
+int slider3ErrorSum = 0;
+int slider4ErrorSum = 0;
+short slider1Output = 0;
+short slider2Output = 0;
+short slider3Output = 0;
+short slider4Output = 0;
+int slider1dError = 0;
+int slider2dError = 0;
+int slider3dError = 0;
+int slider4dError = 0;
+int slider1OldError = 0;
+int slider2OldError = 0;
+int slider3OldError = 0;
+int slider4OldError = 0;
+
+
+long lastPid = 0;
+long pidTime = 0;
+
 #endif

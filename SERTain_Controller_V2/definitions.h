@@ -50,7 +50,7 @@
 #define sliderMotor4ForwardsPin 41
 #define sliderMotor1BackwardsPin 47
 #define sliderMotor2BackwardsPin 52
-#define sliderMotor3BackwardsPin 38
+#define sliderMotor3BackwardsPin 39
 #define sliderMotor4BackwardsPin 43
 #define blinkyPin 26
 #define comSignalPin 6
@@ -141,10 +141,10 @@ int slider1Error = 0;
 int slider2Error = 0;
 int slider3Error = 0;
 int slider4Error = 0;
-int slider1ErrorSum = 0;
-int slider2ErrorSum = 0;
-int slider3ErrorSum = 0;
-int slider4ErrorSum = 0;
+long slider1ErrorSum = 0;
+long slider2ErrorSum = 0;
+long slider3ErrorSum = 0;
+long slider4ErrorSum = 0;
 short slider1Output = 0;
 short slider2Output = 0;
 short slider3Output = 0;
@@ -153,10 +153,10 @@ int slider1dError = 0;
 int slider2dError = 0;
 int slider3dError = 0;
 int slider4dError = 0;
-int slider1OldError = 0;
-int slider2OldError = 0;
-int slider3OldError = 0;
-int slider4OldError = 0;
+int slider1OldVal = 0;
+int slider2OldVal = 0;
+int slider3OldVal = 0;
+int slider4OldVal = 0;
 
 
 long lastPid = 0;

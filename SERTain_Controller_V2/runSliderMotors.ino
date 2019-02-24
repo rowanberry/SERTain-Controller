@@ -1,9 +1,25 @@
 #include "definitions.h"
+
+int i = 0;
+float it = 0;
+
+void dance() {
+  it += 0.05;
+  
+  i = 1000 * abs(sin(it)); 
+  if (enabled) {
+  Serial.println(it);
+  Serial.println(i);
+  }
+  slider1Set = 1000 * abs(sin(it));
+  slider2Set = 1000 * abs(sin(it+45));
+  slider3Set = 1000 * abs(sin(it+90));
+  slider4Set = 1000 * abs(sin(it+135));
+}
+
 void runSliderMotors(){
-  slider1Set = 500;
-  slider2Set = 500;
-  slider3Set = 500;
-  slider4Set = 500;
+  dance();
+  
   if(enabled){
     pid();
   }
@@ -21,18 +37,18 @@ void runSliderMotors(){
   writeToSliderMotors();
 }
 
-#define pid_p_1 0.28
-#define pid_i_1 0.001
-#define pid_d_1 1.5
-#define pid_p_2 0.28
-#define pid_i_2 0.001
-#define pid_d_2 1.5
-#define pid_p_3 .28
+#define pid_p_1 0.6
+#define pid_i_1 0.002
+#define pid_d_1 14
+#define pid_p_2 0.5
+#define pid_i_2 0.002
+#define pid_d_2 12
+#define pid_p_3 0.7
 #define pid_i_3 0.001
-#define pid_d_3 1.5
-#define pid_p_4 0.28
-#define pid_i_4 0.001
-#define pid_d_4 1.5
+#define pid_d_3 13
+#define pid_p_4 .8
+#define pid_i_4 0.0025
+#define pid_d_4 10
 
 void pid(){
   pidTime = millis() - lastPid;
@@ -56,56 +72,25 @@ void pid(){
      slider4ErrorSum += pidTime * slider4Error;
   }
   
-  slider1dError = (slider1Error - slider1OldError) / pidTime;
-  slider2dError = (slider2Error - slider2OldError) / pidTime;
-  slider3dError = (slider3Error - slider3OldError) / pidTime;
-  slider4dError = (slider4Error - slider4OldError) / pidTime;
+  slider1dError = (slider1Val - slider1OldVal) / pidTime;
+  slider2dError = (slider2Val - slider2OldVal) / pidTime;
+  slider3dError = (slider3Val - slider3OldVal) / pidTime;
+  slider4dError = (slider4Val - slider4OldVal) / pidTime;
   
-  slider1Output =  constrain(slider1Error * pid_p_1 + slider1ErrorSum * pid_i_1 + slider1dError * pid_d_1, -255, 255);
-  slider2Output =  constrain(slider2Error * pid_p_2 + slider2ErrorSum * pid_i_2 + slider2dError * pid_d_2, -255, 255);
-  slider3Output =  constrain(slider3Error * pid_p_3 + slider3ErrorSum * pid_i_3 + slider3dError * pid_d_3, -255, 255);
-  slider4Output =  constrain(slider4Error * pid_p_4 + slider4ErrorSum * pid_i_4 + slider4dError * pid_d_4, -255, 255);
-
-  //this helps with the poor response of the motors at low values
-    
-  if(abs(slider1Output) > 10 && abs(slider1Output) < 80) {
-    if(slider1Output > 0) {
-      slider1Output += 50;
-    } else {
-      slider1Output -=50;
-    }
-  }
-  if(abs(slider2Output) > 10 && abs(slider2Output) < 80) {
-    if(slider2Output > 0) {
-      slider2Output += 50;
-    } else {
-      slider2Output -=50;
-    }
-  }
-  if(abs(slider3Output) > 10 && abs(slider3Output) < 80) {
-    if(slider3Output > 0) {
-      slider3Output += 50;
-    } else {
-      slider3Output -=50;
-    }
-  }
-  if(abs(slider4Output) > 10 && abs(slider4Output) < 80) {
-    if(slider4Output > 0) {
-      slider4Output += 50;
-    } else {
-      slider4Output -=50;
-    }
-  }
+  slider1Output =  constrain(slider1Error * pid_p_1 + slider1ErrorSum * pid_i_1 - slider1dError * pid_d_1, -255, 255);
+  slider2Output =  constrain(slider2Error * pid_p_2 + slider2ErrorSum * pid_i_2 - slider2dError * pid_d_2, -255, 255);
+  slider3Output =  constrain(slider3Error * pid_p_3 + slider3ErrorSum * pid_i_3 - slider3dError * pid_d_3, -255, 255);
+  slider4Output =  constrain(slider4Error * pid_p_4 + slider4ErrorSum * pid_i_4 - slider4dError * pid_d_4, -255, 255);
   
   setSliderMotors(1,slider1Output);
   setSliderMotors(2,slider2Output);
   setSliderMotors(3,slider3Output);
   setSliderMotors(4,slider4Output);
-
-  slider1OldError = slider1Error;
-  slider2OldError = slider2Error;
-  slider3OldError = slider3Error;
-  slider4OldError = slider4Error;
+  
+  slider1OldVal = slider1Val;
+  slider2OldVal = slider2Val;
+  slider3OldVal = slider3Val;
+  slider4OldVal = slider4Val;
   
   lastPid = millis();
 }

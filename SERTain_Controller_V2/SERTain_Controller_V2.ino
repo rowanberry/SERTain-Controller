@@ -1,4 +1,6 @@
 #include "definitions.h"
+byte loop_iteration;
+
 void setup() {
   lcd.init();
   lcd.backlight();
@@ -6,8 +8,6 @@ void setup() {
   if(!digitalRead(enablePin)){
     startupSafety();
   }
-  lcdWrite(0, 0, "LCD disabled for PID testing");
-  lcdWrite(1, 0, "PID testing");
   Serial.begin(9600);
   Serial1.begin(9600);
 }
@@ -16,7 +16,11 @@ void loop() {
   readInputs();
   runLights();
   runMainMotors();
-  //runLCD();       commented out to make pid work
+  loop_iteration++;
+  if(loop_iteration > 100) {
+    runLCD();
+    loop_iteration = 0;
+  }
   comSend();
   runSliderMotors();
   menu();

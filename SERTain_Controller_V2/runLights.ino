@@ -1,5 +1,4 @@
 #include "definitions.h"
-int loopTime = 9;
 void runLights() {
   runBlinky();
   presetLights();
@@ -16,28 +15,17 @@ void mapSliderVals(){
 
 
 void runBlinky(){
-  lightLoopCounter();
-  if(enabled){
-    if(loops <= loopTime / 2){
+  if((millis() - lastBlink) > 250){
+    if(enabled) {
+      blinkyVal = !blinkyVal;
+      digitalWrite(blinkyPin, blinkyVal);
+      lastBlink = millis();
+    } else {
       digitalWrite(blinkyPin, HIGH);
     }
-    else{
-      digitalWrite(blinkyPin, LOW);
-    }
   }
-  else {
-    digitalWrite(blinkyPin, HIGH);
-  }
-}
-void lightLoopCounter(){
-  if(loops <= loopTime){
-    loops ++;
-  }
-  else{
-    loops = 0;
-  }
-}
 
+}
 
 //void neoPixel(){
 //  if(slowModeOn){

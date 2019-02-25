@@ -1,20 +1,19 @@
 #include "definitions.h"
 
-int i = 0;
 float it = 0;
 
 void dance() {
   it += 0.05;
   
-  i = 1000 * abs(sin(it)); 
-  if (enabled) {
-  Serial.println(it);
-  Serial.println(i);
-  }
-  slider1Set = 1000 * abs(sin(it));
-  slider2Set = 1000 * abs(sin(it+45));
-  slider3Set = 1000 * abs(sin(it+90));
-  slider4Set = 1000 * abs(sin(it+135));
+  slider1Set = 100 + (800 * abs(sin(it)));
+  slider2Set = 100 + (800 * abs(sin(it+45)));
+  slider3Set = 100 + (800 * abs(sin(it+90)));
+  slider4Set = 100 + (800 * abs(sin(it+135)));
+
+//  if(accelerates) slider1Set = 800; else slider1Set = 150;
+//  slider2Set = 70;
+//  slider3Set = 70;
+//  slider4Set = 70;  
 }
 
 void runSliderMotors(){

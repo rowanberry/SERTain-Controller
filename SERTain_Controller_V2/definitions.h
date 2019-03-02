@@ -137,4 +137,8 @@ bool sliderMotor1Forwards = false;
 bool sliderMotor2Forwards = false;
 bool sliderMotor3Forwards = false;
 bool sliderMotor4Forwards = false;
+unsigned long lastPid = 0;
+int s2ErrorSum = 0;
+int s2Error = 0;
+int s2Output = 0;
 #endif
